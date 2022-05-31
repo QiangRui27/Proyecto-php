@@ -1,12 +1,10 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
 
-<?php
 if(!isset($_SESSION['logged'])) {
 	header('Location: login.php');
 }
-?>
 
-<?php
 //including the database connection file
 include_once("config.php");
 
@@ -40,7 +38,7 @@ $result = $mysqli->query("SELECT * FROM products WHERE login_id=".$_SESSION['id'
 			<td>Update</td>
 		</tr>
 		<?php
-		while($row = mysqli_fetch_array($result)) {		
+		while($row = $result->fetch_array()) {		
 			echo "<tr>";
 			echo "<td>".$row['name']."</td>";
 			echo "<td>".$row['qty']."</td>";
